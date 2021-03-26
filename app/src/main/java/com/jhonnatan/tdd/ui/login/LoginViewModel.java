@@ -47,7 +47,11 @@ public class LoginViewModel extends ViewModel {
         if (username.equals("")){
             return "";
         } else {
-            return null;
+            if (username.length() < 8){
+                return "El campo Email NO puede tener menos de 8 caracteres";
+            } else {
+                return null;
+            }
         }
     }
 
