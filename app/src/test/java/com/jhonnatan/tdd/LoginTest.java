@@ -40,10 +40,15 @@ public class LoginTest {
     }
 
     @Test
-    public void campo_email_mas_8_caracteres_sin_formato_correo() {
+    public void campo_email_mas_8_caracteres_sin_formato() {
         String resultado = loginViewModelTest.validarCampos("123456789","");
         assertEquals("El Email es incorrecto", resultado);
     }
 
+    @Test
+    public void campo_email_mas_8_caracteres_con_formato_correcto() {
+        String resultado = loginViewModelTest.validarCampos("tecsco2013@gmail.com","");
+        assertEquals("El Email es correcto", resultado);
+    }
 
 }
