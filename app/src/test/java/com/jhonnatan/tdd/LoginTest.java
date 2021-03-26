@@ -39,5 +39,11 @@ public class LoginTest {
         assertEquals("El campo Email NO puede tener menos de 8 caracteres", resultado);
     }
 
+    @Test
+    public void campo_email_mas_8_caracteres_sin_formato_correo() {
+        String resultado = loginViewModelTest.validarCampos("123456789","");
+        assertEquals("El Email es incorrecto", resultado);
+    }
+
 
 }
