@@ -44,7 +44,11 @@ public class LoginViewModel extends ViewModel {
     }
 
     public String validarCampos(String username, String password) {
-        return null;
+        if (username.equals("")){
+            return "";
+        } else {
+            return null;
+        }
     }
 
     public void loginDataChanged(String username, String password) {
