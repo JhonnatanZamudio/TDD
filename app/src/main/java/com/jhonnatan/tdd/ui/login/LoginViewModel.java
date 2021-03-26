@@ -3,22 +3,12 @@ package com.jhonnatan.tdd.ui.login;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-
-import android.content.Context;
-import android.util.Log;
-import android.util.Patterns;
-import android.widget.Toast;
-
 import com.jhonnatan.tdd.data.LoginRepository;
 import com.jhonnatan.tdd.data.Result;
 import com.jhonnatan.tdd.data.model.LoggedInUser;
 import com.jhonnatan.tdd.R;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import static java.lang.Boolean.FALSE;
-import static java.lang.Boolean.TRUE;
 
 public class LoginViewModel extends ViewModel {
 
@@ -51,28 +41,10 @@ public class LoginViewModel extends ViewModel {
     }
 
     public String validarCampos(String username, String password) {
-        if(username!= null) {
-            if (username.equals("")) {
-                return "";
-            } else {
-                if (username.length() < 8) {
-                    return "El campo Email NO puede tener menos de 8 caracteres";
-                } else {
-                    if (username.length() > 8) {
-                        System.out.println(validarEmail(username));
-                        if (validarEmail(username)) {
-                            return "El Email es correcto";
-                        } else {
-                            return "El Email es incorrecto";
-                        }
-                    } else {
-                        return null;
-                    }
-                }
-            }
-        } else {
-            return null;
-        }
+        return (username.isEmpty())? "":
+                (username.length() < 8) ? "El campo Email NO puede tener menos de 8 caracteres":
+                        (validarEmail(username))? "El Email es correcto":
+                                "El Email es incorrecto";
     }
 
     private boolean validarEmail(String email) {
