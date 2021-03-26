@@ -32,4 +32,12 @@ public class LoginTest {
         String resultado = loginViewModelTest.validarCampos("","");
         assertEquals("", resultado);
     }
+
+    @Test
+    public void campo_email_menor_8_caracteres() {
+        String resultado = loginViewModelTest.validarCampos("1234567","");
+        assertEquals("El campo Email NO puede tener menos de 8 caracteres", resultado);
+    }
+
+
 }
