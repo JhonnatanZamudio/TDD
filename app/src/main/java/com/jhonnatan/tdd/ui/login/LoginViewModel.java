@@ -19,7 +19,7 @@ public class LoginViewModel extends ViewModel {
     private MutableLiveData<LoginResult> loginResult = new MutableLiveData<>();
     private LoginRepository loginRepository;
 
-    LoginViewModel(LoginRepository loginRepository) {
+    public LoginViewModel(LoginRepository loginRepository) {
         this.loginRepository = loginRepository;
     }
 
@@ -37,14 +37,14 @@ public class LoginViewModel extends ViewModel {
 
         if (result instanceof Result.Success) {
             LoggedInUser data = ((Result.Success<LoggedInUser>) result).getData();
-            loginResult.setValue(new LoginResult(new LoggedInUserView(validarCampos())));
+            loginResult.setValue(new LoginResult(new LoggedInUserView(validarCampos(username,password))));
         } else {
             loginResult.setValue(new LoginResult(R.string.login_failed));
         }
     }
 
-    private String validarCampos() {
-
+    public String validarCampos(String username, String password) {
+        return null;
     }
 
     public void loginDataChanged(String username, String password) {
