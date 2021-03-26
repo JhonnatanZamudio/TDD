@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
+import android.util.Patterns;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
