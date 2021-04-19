@@ -52,4 +52,22 @@ public class LoginTest {
         assertEquals("El Email es correcto", resultado);
     }
 
+    @Test
+    public void campo_password_vacio() {
+        String resultado = loginViewModelTest.validarCampos("tecsco2013@gmail.com","");
+        assertEquals(null, resultado);
+    }
+
+    @Test
+    public void campo_password_menos_5_caracteres() {
+        String resultado = loginViewModelTest.validarCampos("tecsco2013@gmail.com","123");
+        assertEquals("El campo Password  NO puede tener menos de 5 caracteres", resultado);
+    }
+
+    @Test
+    public void campo_password_igual_correo_electronico() {
+        String resultado = loginViewModelTest.validarCampos("tecsco2013@gmail.com","tecsco2013@gmail.com");
+        assertEquals("El Password no puede ser igual al usuario", resultado);
+    }
+
 }

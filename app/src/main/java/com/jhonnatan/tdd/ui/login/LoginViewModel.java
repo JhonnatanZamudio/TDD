@@ -3,10 +3,12 @@ package com.jhonnatan.tdd.ui.login;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+
+import com.jhonnatan.tdd.R;
 import com.jhonnatan.tdd.data.LoginRepository;
 import com.jhonnatan.tdd.data.Result;
 import com.jhonnatan.tdd.data.model.LoggedInUser;
-import com.jhonnatan.tdd.R;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -41,16 +43,27 @@ public class LoginViewModel extends ViewModel {
     }
 
     public String validarCampos(String username, String password) {
-        return (username.isEmpty())? "":
-                (username.length() < 8) ? "El campo Email NO puede tener menos de 8 caracteres":
-                        (validarEmail(username))? "El Email es correcto":
-                                "El Email es incorrecto";
+        if (username.isEmpty()) {
+            return "";
+        } else if (username.length() < 8) {
+            return "El campo Email NO puede tener menos de 8 caracteres";
+        } else if (validarEmail(username)) {
+            if (password.isEmpty()) {
+                return null;
+            } else if (password.length() < 5) {
+                return "El campo Password  NO puede tener menos de 5 caracteres";
+            }
+            return null;
+        } else {
+            return "El Email es incorrecto";
+        }
+
     }
 
     private boolean validarEmail(String email) {
         Pattern pattern = Pattern.compile("^[_A-Za-z0-9-+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
         Matcher mather = pattern.matcher(email);
-        return  mather.find();
+        return mather.find();
     }
 
     public void loginDataChanged(String username, String password) {
