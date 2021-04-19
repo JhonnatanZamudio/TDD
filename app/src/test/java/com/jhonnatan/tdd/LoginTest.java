@@ -72,7 +72,7 @@ public class LoginTest {
 
     @Test
     public void campo_password_sin_caracteres_repetidos_seguidas() {
-        String resultado = loginViewModelTest.validarCampos("tecsco2013@gmail.com","tecsco2013aa");
+        String resultado = loginViewModelTest.validarCampos("tecsco2013@gmail.com","qwerty123aa");
         assertEquals("El  Password no puede tener caracteres repetidos", resultado);
     }
 
