@@ -66,8 +66,14 @@ public class LoginTest {
 
     @Test
     public void campo_password_igual_correo_electronico() {
-        String resultado = loginViewModelTest.validarCampos("tecsco2013@gmail.com","tecsco2013@gmail.com");
+        String resultado = loginViewModelTest.validarCampos("tecsco2013@gmail.com","tecsco2013");
         assertEquals("El Password no puede ser igual al usuario", resultado);
+    }
+
+    @Test
+    public void campo_password_sin_caracteres_repetidos_seguidas() {
+        String resultado = loginViewModelTest.validarCampos("tecsco2013@gmail.com","tecsco2013aa");
+        assertEquals("El  Password no puede tener caracteres repetidos", resultado);
     }
 
 }

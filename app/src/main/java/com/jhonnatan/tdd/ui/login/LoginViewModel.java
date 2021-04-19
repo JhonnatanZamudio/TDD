@@ -52,6 +52,8 @@ public class LoginViewModel extends ViewModel {
                 return null;
             } else if (password.length() < 5) {
                 return "El campo Password  NO puede tener menos de 5 caracteres";
+            } else if (password.contains(username.split("@")[0])) {
+                return "El Password no puede ser igual al usuario";
             }
             return null;
         } else {
